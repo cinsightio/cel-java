@@ -1,0 +1,32 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+    id 'java'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id "io.freefair.lombok" version "5.3.0"
+    id 'antlr'
+}
+
+group = 'com.rbacpro'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    antlr "org.antlr:antlr4:4.5"
+    compile "org.antlr:antlr4-runtime:4.7.1"
+    compileOnly 'org.projectlombok:lombok:1.18.8'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
+    implementation 'org.json:json:20211205'
+}
+
+
+compileJava {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
+
+generateGrammarSource {
+    outputDirectory = file("src/main/java")
+}
