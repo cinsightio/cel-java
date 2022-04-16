@@ -29,4 +29,5 @@ compileJava {
 
 generateGrammarSource {
     outputDirectory = file("src/main/java")
+    arguments += ["-visitor"]
 }

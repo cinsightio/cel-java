@@ -116,6 +116,11 @@ public class CELParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitStart(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitStart(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final StartContext start() throws RecognitionException {
@@ -166,6 +171,11 @@ public class CELParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitExpr(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitExpr(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -229,6 +239,11 @@ public class CELParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitConditionalOr(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitConditionalOr(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -296,6 +311,11 @@ public class CELParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitConditionalAnd(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitConditionalAnd(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ConditionalAndContext conditionalAnd() throws RecognitionException {
@@ -360,6 +380,11 @@ public class CELParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitRelation(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitRelation(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -449,6 +474,11 @@ public class CELParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitCalc(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitCalc(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -565,6 +595,11 @@ public class CELParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitLogicalNot(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitLogicalNot(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class MemberExprContext extends UnaryContext {
 		public MemberContext member() {
@@ -578,6 +613,11 @@ public class CELParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitMemberExpr(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitMemberExpr(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class NegateContext extends UnaryContext {
@@ -594,6 +634,11 @@ public class CELParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitNegate(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitNegate(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -710,6 +755,11 @@ public class CELParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitSelectOrCall(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitSelectOrCall(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class PrimaryExprContext extends MemberContext {
 		public PrimaryContext primary() {
@@ -723,6 +773,11 @@ public class CELParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitPrimaryExpr(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitPrimaryExpr(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class IndexContext extends MemberContext {
@@ -743,6 +798,11 @@ public class CELParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitIndex(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitIndex(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class CreateMessageContext extends MemberContext {
 		public Token op;
@@ -761,6 +821,11 @@ public class CELParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitCreateMessage(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitCreateMessage(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -921,6 +986,11 @@ public class CELParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitCreateList(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitCreateList(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class CreateStructContext extends PrimaryContext {
 		public Token op;
@@ -937,6 +1007,11 @@ public class CELParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitCreateStruct(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitCreateStruct(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class ConstantLiteralContext extends PrimaryContext {
 		public LiteralContext literal() {
@@ -950,6 +1025,11 @@ public class CELParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitConstantLiteral(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitConstantLiteral(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class NestedContext extends PrimaryContext {
@@ -965,6 +1045,11 @@ public class CELParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitNested(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitNested(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class IdentOrGlobalCallContext extends PrimaryContext {
@@ -984,6 +1069,11 @@ public class CELParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitIdentOrGlobalCall(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitIdentOrGlobalCall(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1152,6 +1242,11 @@ public class CELParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitExprList(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitExprList(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final ExprListContext exprList() throws RecognitionException {
@@ -1224,6 +1319,11 @@ public class CELParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitFieldInitializerList(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitFieldInitializerList(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -1305,6 +1405,11 @@ public class CELParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitMapInitializerList(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitMapInitializerList(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 
 	public final MapInitializerListContext mapInitializerList() throws RecognitionException {
@@ -1384,6 +1489,11 @@ public class CELParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitBytes(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitBytes(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class UintContext extends LiteralContext {
 		public Token tok;
@@ -1396,6 +1506,11 @@ public class CELParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitUint(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitUint(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class NullContext extends LiteralContext {
@@ -1410,6 +1525,11 @@ public class CELParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitNull(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitNull(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class BoolFalseContext extends LiteralContext {
 		public Token tok;
@@ -1423,6 +1543,11 @@ public class CELParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitBoolFalse(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitBoolFalse(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class StringContext extends LiteralContext {
 		public Token tok;
@@ -1435,6 +1560,11 @@ public class CELParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitString(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitString(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class DoubleContext extends LiteralContext {
@@ -1451,6 +1581,11 @@ public class CELParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitDouble(this);
 		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitDouble(this);
+			else return visitor.visitChildren(this);
+		}
 	}
 	public static class BoolTrueContext extends LiteralContext {
 		public Token tok;
@@ -1463,6 +1598,11 @@ public class CELParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitBoolTrue(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitBoolTrue(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 	public static class IntContext extends LiteralContext {
@@ -1478,6 +1618,11 @@ public class CELParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof CELListener ) ((CELListener)listener).exitInt(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof CELVisitor ) return ((CELVisitor<? extends T>)visitor).visitInt(this);
+			else return visitor.visitChildren(this);
 		}
 	}
 
